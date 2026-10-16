@@ -109,7 +109,7 @@ def check_item():
         return jsonify({"error": "Send a JSON object containing product_id."}), 400
 
     product_id = payload.get("product_id")
-    if isinstance(product_id, bool):
+    if isinstance(product_id, bool) or not isinstance(product_id, (int, str)):
         return jsonify({"error": "product_id must be a valid product ID."}), 400
 
     try:
